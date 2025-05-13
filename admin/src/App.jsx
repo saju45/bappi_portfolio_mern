@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Sidebar from './components/Sidebar';
 import Add from './pages/Add';
+import List from './pages/List';
 import RecentWorks from './pages/RecentWorks';
 
 
@@ -23,6 +24,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Add token={token} />} />
           <Route path='/recent-works' element={<RecentWorks/>}/>
+          <Route path="/list" element={<List token={token} />} />
+
         </Routes>
       </div>
     </div>
