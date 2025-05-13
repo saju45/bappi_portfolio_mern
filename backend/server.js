@@ -1,3 +1,4 @@
+import cors from "cors";
 import { config } from "dotenv";
 import express from "express";
 import connectCloudinary from "./config/cloudinary.js";
@@ -14,6 +15,7 @@ app.get("/",(req,res)=>{
     res.status(200).json({message:"hello bangladesh"})
 });
 
+app.use(cors());
 app.use("/testimonials",testimonialRouter);
 app.use("/works",workRouter);
 const port=process.env.PORT || 3000;
