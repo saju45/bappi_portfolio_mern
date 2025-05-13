@@ -1,13 +1,19 @@
 import { config } from "dotenv";
 import express from "express";
-
+import connectCloudinary from "./config/cloudinary.js";
+import connectDB from "./config/mongodb.js";
+import testimonialRouter from "./routes/testimonialRoute.js";
 const app=express();
 
 config();
+
+connectDB();
+connectCloudinary();
 app.get("/",(req,res)=>{
     res.status(200).json({message:"hello bangladesh"})
 });
 
+app.use("/testimonials",testimonialRouter);
 const port=process.env.PORT || 3000;
 
 app.listen(port,()=>{

@@ -21,11 +21,11 @@ const About = () => {
           <div className="text-left space-y-4">
             <div className="grid grid-cols-3 gap-4 mb-4">
               <div className="bg-[#1c1c3b] p-4 rounded-lg text-center">
-                <p className="font-semibold text-lg text-primary">1+</p>
+                <p className="font-semibold text-lg text-primary">2+</p>
                 <p className="text-sm text-gray-300">Experience</p>
               </div>
               <div className="bg-[#1c1c3b] p-4 rounded-lg text-center">
-                <p className="font-semibold text-lg text-primary">20+</p>
+                <p className="font-semibold text-lg text-primary">100+</p>
                 <p className="text-sm text-gray-300">Completed</p>
               </div>
               <div className="bg-[#1c1c3b] p-4 rounded-lg text-center">

@@ -49,6 +49,10 @@ const Testimonials = () => {
         <p className="text-primary uppercase mb-2">what my clients say</p>
         <h2 className="text-3xl font-bold mb-12">Testimonials</h2>
 
+       <video controls className="w-1/2 mx-auto mb-5 rounded-lg shadow">
+        <source src={reviewVideo} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
      <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -97,10 +101,7 @@ const Testimonials = () => {
        
       </Swiper>
 
-       <video controls className="w-1/2 rounded-lg shadow">
-        <source src={reviewVideo} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+       
         {/* <div className="grid md:grid-cols-3 gap-8">
 
           {testimonials.map((testimonial, index) => (

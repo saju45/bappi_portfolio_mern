@@ -73,7 +73,7 @@ useEffect(() => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <p className="text-lg text-gray-400 mb-2">Welcome to bappy portfolio</p>
+          <p className="text-lg text-gray-400 mb-2">Welcome to bappi portfolio</p>
           <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
             Your <span className="text-red-600">Strategic Business Partner</span> <br />
             For <span className="text-red-600">Ultimate Success</span>.

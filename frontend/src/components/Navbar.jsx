@@ -12,7 +12,7 @@ const Navbar = () => {
        
         <div className="flex">
         <img src={logoImg} alt="logo" className="w-20 h-10" />
-        <h1 className="text-2xl font-bold text-[#AE8643]"> Bappy Islam</h1>
+        <h1 className="text-2xl font-bold text-[#AE8643]"> Bappi Islam</h1>
         </div>
 
         <nav className="hidden md:flex space-x-6 font-medium">

@@ -1,16 +1,41 @@
+import emailjs from '@emailjs/browser';
+import { useRef } from "react";
 import { CiLocationOn } from "react-icons/ci";
 import { FaWhatsappSquare } from "react-icons/fa";
 import { MdOutgoingMail } from "react-icons/md";
+import { toast } from 'react-toastify';
 
 const Contact = () => {
     const contact_info = [
-    { logo: MdOutgoingMail, text: "Rafsanah646@gmail.com" },
+    { logo: MdOutgoingMail, text: "Bappiislam648@gmail.com" },
     { logo: FaWhatsappSquare, text: "01611652988" },
     {
       logo: CiLocationOn,
       text: "babupara,Rangpur",
     },
   ];
+
+    const form = useRef();
+  const handleSubmit=(e)=>{
+    e.preventDefault();
+    emailjs
+    .sendForm(import.meta.env.VITE_SERVICE_KEY, import.meta.env.VITE_TEMPLATE_KEY, form.current, {
+      publicKey: import.meta.env.VITE_PUBLIC_KEY,
+    })
+    .then(
+      () => {
+        console.log('SUCCESS!');
+        toast.success("Message sent successfully!");
+        console.log("inputs : ",form);
+        
+        form.current.reset();
+      },
+      (error) => {
+        console.log('FAILED...', error.text);
+        toast.error("Failed to send message!");
+      },
+    );
+  }
   return (
     <section id="contact" className="py-16 px-4 bg-black text-white">
       <div className="max-w-6xl mx-auto text-center">
@@ -21,15 +46,17 @@ const Contact = () => {
         className="mt-16 flex md:flex-row flex-col
          gap-6 max-w-7xl w-full bg-[#1c1c3b] md:p-6 p-2 rounded-lg mx-auto"
         >
-          <form className="space-y-6 text-left">
+          <form className="space-y-6 text-left" onSubmit={handleSubmit} ref={form}>
           <div className="grid md:grid-cols-2 gap-6">
             <input
               type="text"
               placeholder="Your Name"
               className="w-full px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary"
+              name="name"
             />
             <input
               type="email"
+              name="email"
               placeholder="Your Email"
               className="w-full px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary"
             />
@@ -38,12 +65,14 @@ const Contact = () => {
           <input
             type="text"
             placeholder="Subject"
+            name="subject"
             className="w-full px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary"
           />
 
           <textarea
             rows="6"
             placeholder="Your Message"
+            name="message"
             className="w-full px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary"
           ></textarea>
 
