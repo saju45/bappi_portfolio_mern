@@ -90,12 +90,11 @@ export const updateTestimonial = async (req, res) => {
     }
 
       
-
     let testimonial;
 
     if (req.file) {
         const imageUrl=await cloudinary.uploader.upload(req.file.path,{resource_type:"image"}).then((res)=>res.secure_url);
-        
+
       testimonial = await Testimonial.findByIdAndUpdate(id, {
         name,
         description,

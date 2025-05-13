@@ -9,12 +9,17 @@ import 'swiper/css/pagination';
 // import required modules
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import { backendUrl } from '../App';
 import armandoImg from "../assets/armando.jpeg";
 import carlImage from "../assets/carl.jpeg";
 import reviewVideo from "../assets/client.mp4";
 import lourentImg from "../assets/laurent.jpeg";
 import steveImg from "../assets/steve.jpeg";
-const testimonials = [
+import TestimonialCard from './TestimonialCard';
+const test = [
   {
     name: "Laurent Rozenfeld",
     image: lourentImg,
@@ -43,6 +48,21 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
+
+  const [testimonials,setTestimonials]=useState([])
+  useEffect(()=>{
+    const fetchTestimonials=async()=>{
+      try {
+        const response =await axios.get(backendUrl+"/testimonials/get");
+        setTestimonials(response.data)
+      } catch (error) {
+        console.log(error);
+        toast.error(error.response.data.error)
+      }
+    }
+
+    fetchTestimonials();
+  },[])
   return (
     <section id="testimonials" className="py-16 px-4 bg-black text-white">
       <div className="max-w-6xl mx-auto text-center">
@@ -80,21 +100,9 @@ const Testimonials = () => {
         modules={[Autoplay, Pagination, Navigation]}
         className=" "
       >
-       
-          {testimonials.map((testimonial, index) => (
-            <SwiperSlide key={index}
->
-            <div
-              className="bg-[#1c1c3b] p-6 rounded-xl shadow hover:shadow-lg transition-shadow duration-300"
-            >
-              <img
-                src={testimonial.image}
-                alt={testimonial.name}
-                className="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-primary"
-              />
-              <p className="text-gray-300 text-sm mb-4 italic">"{testimonial.review}"</p>
-              <h4 className="text-primary font-semibold">{testimonial.name}</h4>
-            </div>
+          {testimonials.map((testimonial) => (
+            <SwiperSlide key={testimonial._id} >
+              <TestimonialCard testimonial={testimonial}/>
             </SwiperSlide>
 
           ))}

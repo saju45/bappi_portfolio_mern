@@ -7,6 +7,8 @@ import Hero from "./components/Hero"
 import Navbar from "./components/Navbar"
 import RecentWork from "./components/RecentWork"
 import Testimonials from "./components/Testimonials"
+
+export const backendUrl=import.meta.env.VITE_BACKEND_URL;
 const App = () => {
   return (
     <div>

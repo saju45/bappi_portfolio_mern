@@ -25,9 +25,7 @@ const Contact = () => {
     .then(
       () => {
         console.log('SUCCESS!');
-        toast.success("Message sent successfully!");
-        console.log("inputs : ",form);
-        
+        toast.success("Message sent successfully!");        
         form.current.reset();
       },
       (error) => {
