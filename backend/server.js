@@ -3,6 +3,7 @@ import express from "express";
 import connectCloudinary from "./config/cloudinary.js";
 import connectDB from "./config/mongodb.js";
 import testimonialRouter from "./routes/testimonialRoute.js";
+import workRouter from "./routes/workRoute.js";
 const app=express();
 
 config();
@@ -14,6 +15,7 @@ app.get("/",(req,res)=>{
 });
 
 app.use("/testimonials",testimonialRouter);
+app.use("/works",workRouter);
 const port=process.env.PORT || 3000;
 
 app.listen(port,()=>{
