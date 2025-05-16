@@ -31,7 +31,7 @@ const Sidebar = ({setToken}) => {
              <div className="hidden lg:flex">Recent Works</div>
             </NavLink>
 
-            <div className="max-sm:ml-5 sm:mt-72">
+            <div className="max-sm:ml-5 sm:mt-10">
                 <button onClick={()=>setToken("")} className="flexStart gap-x-2 sm:pl-12 p-5 medium-15 cursor-pointer h-10 rounded-xl text-red-500">
                     <BiLogOut className="text-lg"/>
                     <div className="hidden lg:flex">Logout</div>

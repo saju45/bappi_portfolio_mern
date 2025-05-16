@@ -25,9 +25,10 @@ const Add = ({token}) => {
             formData.append("description",description);
             formData.append("image",image);
 
-            const response =await axios.post(`${backendUrl}/testimonials/add`,formData);
-            console.log("add response : ",response);
-            
+            const response =await axios.post(`${backendUrl}/testimonials/add`,formData,{
+                headers:{token}
+            });
+                        
             toast.success(response.data.message);
             setImage(null)
             setName("");

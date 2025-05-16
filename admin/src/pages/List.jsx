@@ -31,7 +31,6 @@ const List = ({token}) => {
         }
       });
 
-      console.log("delete response : ",respnse);
       
       toast.success(respnse.data.message);
       setTestimonialList(testimonialList.filter((item)=>item._id!==testimonialId))      

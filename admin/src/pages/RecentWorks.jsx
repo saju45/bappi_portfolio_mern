@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { backendUrl } from "../App";
 import upload_icons from '../assets/upload_icon.png';
 
-const RecentWorks = () => {
+const RecentWorks = ({token}) => {
     const [image,setImage]=useState(null);
     const [title,setTitle]=useState("");
     const [category,setCategory]=useState("")
@@ -25,9 +25,8 @@ const RecentWorks = () => {
       
         try {
             if (editId) {
-             const response=await axios.put(`${backendUrl}/works/update/${editId}`,formData);
+             const response=await axios.put(`${backendUrl}/works/update/${editId}`,formData,{headers:{token}});
             toast.success(response.data.message);
-            console.log("updated response : ",response);
             
             setTitle("");
             setCategory("");
@@ -35,11 +34,10 @@ const RecentWorks = () => {
             setRecentWorks(recentWorks.map((item)=>item._id===editId?{...item,title,category}:item))
             // window.location.reload();
             }else{
-            const response =await axios.post(backendUrl+"/works/add",formData);
+            const response =await axios.post(backendUrl+"/works/add",formData,{headers:{token}});
             setTitle("");
             setCategory("");
             setImage(null);
-            console.log("add response : ",response);
             setRecentWorks((prev)=>[...prev,{...response.data.work}]);
             toast.success(response.data.message)
             }
@@ -54,7 +52,9 @@ const RecentWorks = () => {
     const handleDelete=async(workId)=>{
 
         try {
-            const response=await axios.delete(`${backendUrl}/works/delete/${workId}`);
+            const response=await axios.delete(`${backendUrl}/works/delete/${workId}`,{
+              headers:{token}
+            });
             toast.success(response.data.message);
             setRecentWorks(recentWorks.filter((item)=>item._id!==workId));
         } catch (error) {

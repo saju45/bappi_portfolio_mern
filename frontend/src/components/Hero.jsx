@@ -1,10 +1,9 @@
 
 import { motion } from "framer-motion";
+import { default as heroImg, default as heroImg3 } from "../assets/bappy_hero.png";
+import { default as heroImg2, default as heroImg4 } from "../assets/bappy_hero2.png";
+
 import hackingImg from "../assets/hacking.gif";
-import heroImg3 from "../assets/hero3.jpg";
-import heroImg4 from "../assets/hero4.jpg";
-import heroImg from "../assets/man.png";
-import heroImg2 from "../assets/man2.png";
 
 import { useEffect, useState } from "react";
 // import { FaFacebook } from "react-icons/fa";
@@ -110,7 +109,7 @@ useEffect(() => {
              <img
              src={images[index]}
               alt="Hero"
-              className="rounded-xl md:absolute top-0 left-5 h-full md:h-[95%] w-[60%]  "
+              className="rounded-xl md:absolute top-0 left-5 h-full md:h-[100%] w-[50%]  "
             />
             <div className="absolute top-4 right-0 md:-right-15 p-4 bg-white/20 backdrop:blur-md  text-white text-lg rounded-lg w-1/2 shadow-md">
                {displayText}

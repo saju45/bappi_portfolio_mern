@@ -1,4 +1,4 @@
-import heroImg from "../assets/hero.jpg"; // Replace with your actual image path
+import heroImg from "../assets/bappy_hero2.png"; // Replace with your actual image path
 
 const About = () => {
   return (
